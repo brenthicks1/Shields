@@ -1,13 +1,13 @@
 
 
- <StatDef ParentName="ArmorRatingBase">
+ <StatDef ParentName="ArmorRatingBase" Class="PhysicalShields.SheildStatDefOf">
     <defName>ArmorRating_Blunt</defName>
     <label>Armor - Blunt</label>
     <description>Armor against blunt damage like club attacks, rock falls, and explosions.</description>
   </StatDef>
 
 
-<StatDef>
+<StatDef Class="PhysicalShields.SheildStatDefOf">
     <defName>PhysicalShieldDurabilityMax</defName>
     <label>Physical Shield Durability</label>
     <description>The maximum Durability a Physical Shield Can have. The More Durability, The More Damage That Can Be Absorbed.</description>

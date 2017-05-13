@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
-	<ThingDef ParentName="ApparelBase">
-		<thingClass>PhysicalShield</thingClass>
+	<ThingDef ParentName="ApparelBase" Class="PhysicalShields.PhysicalShields">
+		<thingClass>Apparel</thingClass>
 		<defName>Apparel_PhysicalShield</defName>
 		<label>phyiscal shield</label>
 		<description>A crude , handcrafted blocking device. </description>
@@ -35,8 +35,6 @@
         <compClass>CompQuality</compClass>
       </li>
       <li Class="CompProperties_Art">
-        <nameMaker>ArtName_PhysicalShield</nameMaker>
-        <descriptionMaker>ArtDescription_PhysicalShield</descriptionMaker>
         <minQualityForArtistic>Poor</minQualityForArtistic>
       </li>
     </comps>
@@ -70,6 +68,7 @@
           <li>Gold</li>
           <li>Silver</li>
         </exceptedThingDefs>
+        <costStuffCount>40</costStuffCount>
       </defaultIngredientFilter>
     </recipeMaker>
   </ThingDef>
