@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
-	<ThingDef ParentName="ApparelBase" Class="PhysicalShields.PhysicalShields">
+	<ThingDef ParentName="ApparelBase" >
 		<thingClass>Apparel</thingClass>
 		<defName>Apparel_PhysicalShield</defName>
 		<label>phyiscal shield</label>
@@ -10,7 +10,7 @@
 		<statBases>
 			<MarketValue>1200</MarketValue>
       <Mass>3</Mass>
-      <PhysicalShieldDurabilityMax>100</PhysicalShieldDurabilityMax>
+      <MaxHitPoints>100</MaxHitPoints>
       <ArmorRating_Blunt>10</ArmorRating_Blunt>
       <MaxHitPoints>100</MaxHitPoints>
     </statBases>
@@ -68,7 +68,6 @@
           <li>Gold</li>
           <li>Silver</li>
         </exceptedThingDefs>
-        <costStuffCount>40</costStuffCount>
       </defaultIngredientFilter>
     </recipeMaker>
   </ThingDef>
@@ -90,9 +89,8 @@
 		<statBases>
 			<WorkToMake>400</WorkToMake>
 			<Mass>3.0</Mass>
-			<PhysicalShieldDurabilityMax>15</PhysicalShieldDurabilityMax>
-			<ArmorRating_Blunt>10</ArmorRating_Blunt>
 			<MaxHitPoints>20</MaxHitPoints>
+			<ArmorRating_Blunt>10</ArmorRating_Blunt>
 		</statBases>
 		<equippedAngleOffset>0</equippedAngleOffset>
 		<stuffCategories>

@@ -1,6 +1,7 @@
 ﻿using System;
 using RimWorld;
 using Verse;
+using UnityEngine;
 
 namespace PhysicalShields
 {
@@ -24,26 +25,35 @@ namespace PhysicalShields
         {
             get
             {
-                return this.GetStatValue(ShieldStatDefof.PhysicalShieldDurabilityMax, true);
+                return this.GetStatValue(StatDefOf.MaxHitPoints, true);
             }
         }
 
-        private float DurabilityPerTick
+        public override bool CheckPreAbsorbDamage(DamageInfo dinfo)
         {
-            get
+            if (this.ShieldState == ShieldState.Usabel && ((dinfo.Instigator != null && !dinfo.Instigator.Position.AdjacentTo8WayOrInside(this.wearer.Position)) || dinfo.Def.isExplosive))
             {
-                return this.GetStatValue(ShieldStatDefOf.PhysicalShieldDurabilityBase, true);
+                if (dinfo.Instigator != null)
+                {
+                    AttachableThing attachableThing = dinfo.Instigator as AttachableThing;
+                    if (attachableThing != null && attachableThing.parent == this.wearer)
+                    {
+                        return false;
+                    }
+                }
+                this.Durability -= (float)dinfo.Amount * this.DurabilityLossPerDamage;
+                if (this.Durability < 0f)
+                {
+                    this.Break();
+                }
+                else
+                {
+                    this.AbsorbedDamage(dinfo);
+                }
+                return true;
             }
+            return false;
         }
-
-        public float Durability
-        {
-            get
-            {
-                return this.Durability;
-            }
-        }
-
 
         public ShieldState ShieldState
         {
@@ -53,7 +63,7 @@ namespace PhysicalShields
                 {
                     return ShieldState.Usable;
                 }
-                else if (this.ticksToBreak <= 0 )
+                else if (this.ticksToBreak <= 0)
                 {
                     return ShieldState.Broken;
                 }
@@ -67,11 +77,27 @@ namespace PhysicalShields
             Scribe_Values.LookValue<float>(ref this.Durability, "durability", 0f, false);
             Scribe_Values.LookValue<int>(ref this.ticksToBreak, "ticksToBreak", -1, false);
         }
-        
-        [DebuggerHidden]
-        public override IEnumerable<apparel>
 
-
-
-    }
-}
+        public override void Tick()
+        {
+            base.Tick();
+            if (this.wearer == null)
+            {
+                this.energy = 0f;
+                return;
+            }
+            if (this.ShieldState == ShieldState.Damaged)
+            {
+                this.ticksToBreak--; 
+                if (this.ticksToBreak <= 0)
+                {
+                    this.Broken();
+                }
+                else
+                {
+                    this.Usable();
+                }
+            }
+        }
+    }//end class PhysicalShield
+}//end namespace PhysicalShield

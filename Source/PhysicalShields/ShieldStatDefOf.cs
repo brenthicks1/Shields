@@ -2,11 +2,12 @@
 using RimWorld;
 using Verse;
 using PhysicalShields;
+using UnityEngine;
 
-namespace ShieldStatDefof
+namespace ShieldStatDefof 
 {
     [DefOf]
-    public static class SheildStatDefOf
+    public static class SheildStatDefOf : ShieldStatDef
     {
         public static ShieldStatDef DeteriorationRate;
 
