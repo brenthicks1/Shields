@@ -1,3 +1,0 @@
-C:\Users\brent\Desktop\RimWorldMods\Shields\Assembilies\PhysicalShields.dll
-C:\Users\brent\Desktop\RimWorldMods\Shields\Source\PhysicalShields\obj\Debug\PhysicalShields.csprojResolveAssemblyReference.cache
-C:\Users\brent\Desktop\RimWorldMods\Shields\Source\PhysicalShields\obj\Debug\PhysicalShields.dll
